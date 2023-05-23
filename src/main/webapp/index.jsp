@@ -4,6 +4,8 @@
 
 	<h3>WelCome to Jenkins! We are working on Code Pipeline version 1</h3>
 	<h3>WelCome to Jenkins! We are working on Code Pipeline version 2</h3>
+	<h3>WelCome to Jenkins! We are working on Code Pipeline version 1</h3>
+	<h3>WelCome to Jenkins! We are working on Code Pipeline version 2</h3>
 	
 
 
