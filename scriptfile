@@ -1,0 +1,17 @@
+node {
+    
+        //git stage
+        stage('SCM Checkout') {
+           
+                //echo 'Hello World'
+                git credentialsId: 'gitlogindetails', url: 'https://github.com/HARIDARUKUMALLI/java-tomcat-maven-example.git'
+            
+        }
+        // build stage
+        stage('Build stage') {
+            
+               bat 'mvn clean install sonar:sonar'
+            
+        }
+    
+}
