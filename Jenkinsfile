@@ -1,18 +1,46 @@
 pipeline {
     agent any
-
     stages {
-        //git stage
-        stage('SCM Checkout') {
+        stage ('Build CI Project') {
             steps {
-                //echo 'Hello World'
-                git credentialsId: 'gitlogindetails', url: 'https://github.com/HARIDARUKUMALLI/java-tomcat-maven-example.git'
+                
+               bat  'mvn clean install'
+
+            }
+
+            post{
+                success{                    
+
+                    archiveArtifacts artifacts : '**/*.war'
+                }
             }
         }
-        // build stage
-        stage('Build stage') {
-            steps {
-               bat 'mvn clean install sonar:sonar'
+
+        stage ('Deploy Build in Dev CD Project'){
+            steps{
+
+                build job : 'Dev-CD-Project'
+
+            }
+        }
+
+        stage ('Deploy to Production'){
+            steps{
+                timeout (time: 5, unit:'DAYS'){
+                    input message: 'Approve PRODUCTION Deployment?'
+                }
+                
+                build job : 'prod-cd-project'
+            }
+
+            post{
+                success{
+                    echo 'Deployment on PRODUCTION is Successful'
+                }
+
+                failure{
+                    echo 'Deployement Failure on PRODUCTION'
+                }
             }
         }
     }
