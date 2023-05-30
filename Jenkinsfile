@@ -1,25 +1,28 @@
 pipeline {
     agent any
     stages {
-        stage ('Build CI Project') {
+        stage ('Build Servlet Project') {
             steps {
-                
-               bat  'mvn clean install'
+                /*For windows machine */
+               bat  'mvn clean package'
 
+                /*For Mac & Linux machine */
+               // sh  'mvn clean package'
             }
 
             post{
-                success{                    
+                success{
+                    echo 'Now Archiving ....'
 
                     archiveArtifacts artifacts : '**/*.war'
                 }
             }
         }
 
-        stage ('Deploy Build in Dev CD Project'){
+        stage ('Deploy Build in Staging Area'){
             steps{
 
-                build job : 'Dev-CD-Project'
+                build job : 'Deploy-StagingArea-Piple'
 
             }
         }
@@ -30,7 +33,7 @@ pipeline {
                     input message: 'Approve PRODUCTION Deployment?'
                 }
                 
-                build job : 'prod-cd-project'
+                build job : 'Deploy-Production-Pipeline'
             }
 
             post{
