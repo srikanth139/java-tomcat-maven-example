@@ -6,6 +6,7 @@
 	<h3>WelCome to Jenkins! We are working on Code Pipeline version 2</h3>
 	<h3>WelCome to Jenkins! We are working on Code Pipeline version 3</h3>
 	<h3>WelCome to Jenkins! We are working on Code Pipeline version 4</h3>
+	<h3>thsi is a devops class for batch on morning 9 AM</h3>
 	
 	
 
