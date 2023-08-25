@@ -8,6 +8,8 @@
 	<h3>WelCome to Jenkins! We are working on Code Pipeline version 4</h3>
 	<h3>thsi is a devops class for batch on morning 9 AM</h3>
 	<h3>thsi is a devops class for batch on morning 6 AM</h3>
+	<h3>thsi is a devops class for batch on morning 10 AM</h3>
+	<h3>thsi is a devops class for batch on morning 12 AM</h3>
 	
 	
 
