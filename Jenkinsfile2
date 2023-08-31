@@ -1,0 +1,33 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('git code') {
+            steps {
+                git credentialsId: 'gitlogindetails', url: 'https://github.com/HARIDARUKUMALLI/java-tomcat-maven-example.git'
+            }
+        }
+        
+         stage('maven build') {
+            steps {
+               sh 'mvn clean install'
+            }
+        }
+		 stage('sonar') {
+            steps {
+               echo'sonar:sonar'
+            }
+        }
+		 stage('test') {
+            steps {
+               echo'test'
+            }
+        }
+		 stage('docker image') {
+            steps {
+               echo'docker images'
+            }
+        }
+        
+        }
+    }
