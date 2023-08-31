@@ -13,6 +13,11 @@ pipeline {
 				}
 			}
 		}
+	stage ("Dev CD Pipeline"){
+			steps{
+			build job : 'dev-pipeline'
+			}
+		}
         
         }
     }
