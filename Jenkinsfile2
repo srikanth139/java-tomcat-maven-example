@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     stages {
-        stage ("CI-Project"){
+        stage ("Build"){
 			steps {
 				bat 'mvn clean install'
 			}
@@ -13,9 +13,14 @@ pipeline {
 				}
 			}
 		}
-	stage ("Dev CD Pipeline"){
+	stage ("Dev_Deploy_Servlet_Starging_Env"){
 			steps{
-			build job : 'dev-pipeline'
+			build job : 'Dev_Deploy_Servlet_Starging_Env'
+			}
+		}
+	stage ("QA_Deploy_Servlet_Starging_Env"){
+			steps{
+			build job : 'QA_Deploy_Servlet_Starging_Env'
 			}
 		}
         
