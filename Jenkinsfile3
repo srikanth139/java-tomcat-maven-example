@@ -1,0 +1,12 @@
+pipeline {
+    agent { label 'devslave1' }
+
+    stages {
+        stage ("Build"){
+			steps {
+				bat 'mvn clean install'
+			}
+		       
+        }
+    }
+}
