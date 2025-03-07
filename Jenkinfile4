@@ -1,0 +1,21 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Maven build') {
+            steps {
+                bat 'mvn clean install'
+            }
+        }
+        stage('Archique') {
+            steps {
+                archiveArtifacts artifacts: '**/*.war', followSymlinks: false
+            }
+        }
+        stage('COPY') {
+            steps {
+                build 'Dev_Tomcat'
+            }
+        }
+    }
+}
